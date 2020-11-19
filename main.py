@@ -1,9 +1,8 @@
 import sys
-from PyQt5 import uic  # Импортируем uic
 from PyQt5.QtGui import QColor, QPainter
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from random import randint
-
+import example
 
 class MyWidget(QMainWindow):
     def __init__(self):
@@ -12,7 +11,7 @@ class MyWidget(QMainWindow):
 
     def initUI(self):
         self.setWindowTitle('Рисование')
-        uic.loadUi('UI.ui', self)  # Загружаем дизайн
+        self.setupUi(self)  # Загружаем дизайн
         self.pushButton.clicked.connect(self.paint)
 
     def paintEvent(self, event):
