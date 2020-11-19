@@ -12,7 +12,7 @@ class MyWidget(QMainWindow):
 
     def initUI(self):
         self.setWindowTitle('Рисование')
-        uic.loadUi('krygi.ui', self)  # Загружаем дизайн
+        uic.loadUi('UI.ui', self)  # Загружаем дизайн
         self.pushButton.clicked.connect(self.paint)
 
     def paintEvent(self, event):
