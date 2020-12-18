@@ -1,17 +1,18 @@
 import sys
+from PyQt5 import uic  # Импортируем uic
 from PyQt5.QtGui import QColor, QPainter
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from random import randint
-import Ui
 
-class MyWidget(QMainWindow, Ui.Ui_MainWindow):
+
+class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setupUi(self)
         self.initUI()
 
     def initUI(self):
         self.setWindowTitle('Рисование')
+        uic.loadUi('UI.ui', self)  # Загружаем дизайн
         self.pushButton.clicked.connect(self.paint)
 
     def paintEvent(self, event):
@@ -21,7 +22,7 @@ class MyWidget(QMainWindow, Ui.Ui_MainWindow):
         qp.end()
 
     def draw_figure(self, qp):
-        qp.setBrush(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
+        qp.setBrush(QColor(255, 255, 0))
         w = randint(0, 200)
         qp.drawEllipse(randint(100, 700) - w // 2, randint(100, 350) - w // 2, w, w)
 
